@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Lab } from "../models/Labs";
+// import { Lab } from "../models/Labs";
 
 export const getAllLabs = async (req: Request, res: Response) => {
   try {
