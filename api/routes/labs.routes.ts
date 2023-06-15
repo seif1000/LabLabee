@@ -10,7 +10,7 @@ import {
 const router = Router();
 
 router.get("/", getAllLabs);
-router.post("/", createLab);
+router.post("/create", createLab);
 router.put("/:lab_id", updateLab);
 router.get("/:lab_id", getLabById);
 router.delete("/:lab_id", deleteLab);

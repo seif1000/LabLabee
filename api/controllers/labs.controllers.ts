@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-// import { Lab } from "../models/Labs";
+import { ILab, Lab } from "../models/Labs";
 
 export const getAllLabs = async (req: Request, res: Response) => {
   try {
@@ -8,8 +8,11 @@ export const getAllLabs = async (req: Request, res: Response) => {
   }
 };
 
-export const createLab = async (req: Request, res: Response) => {
+export const createLab = async (req: Request<{}, {}, ILab>, res: Response) => {
   try {
+    const user = new Lab<ILab>(req.body);
+    await user.save();
+    return res.status(201).send(user);
   } catch (error: any) {
     return res.status(500).send(error.message);
   }
