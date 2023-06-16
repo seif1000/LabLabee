@@ -4,16 +4,17 @@ import "./index.css";
 type DatePickerProps = {
   date: Date;
   setDate: Function;
+  name: string;
 };
-const DatePickerComponent = ({ setDate, date }: DatePickerProps) => {
+const DatePickerComponent = ({ setDate, date, name }: DatePickerProps) => {
   return (
     <DatePicker
-      //dateFormat="dd-MM-yyyy"
       wrapperClassName="datePicker"
       onChange={(date: Date) => setDate(date)}
       selected={date}
       showTimeSelect={true}
       dateFormat="Pp"
+      name={name}
     />
   );
 };

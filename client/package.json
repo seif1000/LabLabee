@@ -12,14 +12,17 @@
   "dependencies": {
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
+    "@types/react-datepicker": "^4.11.2",
     "@types/react-modal": "^3.16.0",
     "formik": "^2.4.2",
+    "install": "^0.13.0",
     "react": "^18.2.0",
     "react-datepicker": "^4.14.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.12.1",
-    "uninstall": "^0.0.0"
+    "uninstall": "^0.0.0",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
