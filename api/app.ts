@@ -1,7 +1,7 @@
 import Express, { Request, Response } from "express";
 import { router } from "./routes/labs.routes";
 import mongoose from "mongoose";
-
+import "dotenv/config";
 let app: Express.Application;
 
 app = Express();
@@ -9,14 +9,12 @@ app = Express();
 app.use(Express.json());
 
 mongoose
-  .connect(
-    "mongodb+srv://lablabee:lablabee@cluster0.sn8ll9s.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_DB as string)
   .then(() => {
-    console.log("mongodb connected");
+    //console.log("mongodb connected");
   })
   .catch((error) => {
-    console.log("mongodb connection error", error);
+    // console.log("mongodb connection error", error);
   });
 
 app.get("/", (req: Request, res: Response) => {

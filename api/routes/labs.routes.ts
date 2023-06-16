@@ -16,7 +16,7 @@ let checkSchemaLab = checkSchema({
       errorMessage: "Lab name should be a string",
     },
     isLength: {
-      options: { min: 8, max: 20 },
+      options: { min: 5, max: 50 },
       errorMessage: "Lab name should be at least 8 chars long and less than 20",
     },
   },
@@ -25,7 +25,7 @@ let checkSchemaLab = checkSchema({
       errorMessage: "Lab technology should be a string",
     },
     isLength: {
-      options: { min: 8, max: 20 },
+      options: { min: 5, max: 50 },
       errorMessage: "Lab technology should be at least 8 chars long",
     },
   },

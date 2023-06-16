@@ -26,3 +26,7 @@ client/*.sw?
 
 
 api/node_modules
+api/coverage
+api/jest.config.js
+api/dist
+api/.env
