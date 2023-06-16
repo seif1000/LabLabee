@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ILab, Lab } from "../models/Labs";
+import { validationResult } from "express-validator";
 
 export const getAllLabs = async (req: Request, res: Response) => {
   try {
@@ -10,7 +11,13 @@ export const getAllLabs = async (req: Request, res: Response) => {
 
 export const createLab = async (req: Request<{}, {}, ILab>, res: Response) => {
   try {
+    const result = validationResult(req);
+
+    if (!result.isEmpty()) {
+      return res.status(400).send(result.array());
+    }
     const user = new Lab<ILab>(req.body);
+
     await user.save();
     return res.status(201).send(user);
   } catch (error: any) {
