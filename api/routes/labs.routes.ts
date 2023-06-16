@@ -8,7 +8,7 @@ import {
   updateLab,
 } from "../controllers/labs.controllers";
 
-import { body, checkSchema } from "express-validator";
+import { checkSchema } from "express-validator";
 
 let checkSchemaLab = checkSchema({
   name: {
@@ -17,7 +17,7 @@ let checkSchemaLab = checkSchema({
     },
     isLength: {
       options: { min: 8, max: 20 },
-      errorMessage: "Lab name should be at least 8 chars long",
+      errorMessage: "Lab name should be at least 8 chars long and less than 20",
     },
   },
   technology: {
@@ -71,7 +71,7 @@ const router = Router();
 
 router.get("/", getAllLabs);
 router.post("/create", checkSchemaLab, createLab);
-router.put("/:lab_id", updateLab);
+router.put("/:lab_id", checkSchemaLab, updateLab);
 router.get("/:lab_id", getLabById);
 router.delete("/:lab_id", deleteLab);
 export { router };
