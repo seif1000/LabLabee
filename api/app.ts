@@ -1,12 +1,14 @@
 import Express, { Request, Response } from "express";
 import { router } from "./routes/labs.routes";
 import mongoose from "mongoose";
+import cors from "cors";
 import "dotenv/config";
 let app: Express.Application;
 
 app = Express();
 
 app.use(Express.json());
+app.use(cors());
 
 mongoose
   .connect(process.env.MONGO_DB as string)

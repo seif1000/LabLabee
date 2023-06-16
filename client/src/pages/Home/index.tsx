@@ -1,10 +1,10 @@
 import LabCard from "../../component/LabCard";
-
-import ModalComponent from "../../component/Modal";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { useGetAllLabsQuery } from "../../redux/api";
 
 const Home = () => {
+  const { data, error, isLoading } = useGetAllLabsQuery(null);
+  console.log(data, error, isLoading);
+
   return (
     <div className="mt-20 flex flex-row flex-wrap px-10 ">
       <LabCard />
