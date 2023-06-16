@@ -1,8 +1,13 @@
-import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
+import DatePickerComponent from "../../component/datePicker";
+import { useState } from "react";
 
 const CreateLab = () => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  console.log(typeof startDate, endDate);
+
   return (
     <div>
       <div className="mx-auto mt-32 max-w-lg px-6 py-6 lg:px-8">
@@ -12,7 +17,7 @@ const CreateLab = () => {
         <form className="space-y-3" action="#">
           <div>
             <label
-              for="name"
+              htmlFor="name"
               className="mb-1 block text-sm font-medium text-gray-900"
             >
               Lab name
@@ -21,14 +26,14 @@ const CreateLab = () => {
               type="email"
               name="email"
               id="email"
-              className="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 placeholder-gray-400"
+              className="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none"
               placeholder="name@company.com"
               required
             />
           </div>
           <div>
             <label
-              for="technology"
+              htmlFor="technology"
               className=" mb-1 block text-sm font-medium text-gray-900"
             >
               Lab thechnology
@@ -38,16 +43,28 @@ const CreateLab = () => {
               name="password"
               id="password"
               placeholder="••••••••"
-              className="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 placeholder-gray-400"
+              className="block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none"
               required
             />
           </div>
-          <div>
-            <div>
-              <DatePicker selected={new Date()} />
+          <div className="flex flex-row">
+            <div className=" flex-1">
+              <label
+                htmlFor="technology"
+                className=" mb-1 block text-sm font-medium text-gray-900"
+              >
+                Satrt date
+              </label>
+              <DatePickerComponent date={startDate} setDate={setStartDate} />
             </div>
-            <div>
-              <DatePicker selected={new Date()} />
+            <div className=" flex-1">
+              <label
+                htmlFor="technology"
+                className=" mb-1 block text-sm font-medium text-gray-900"
+              >
+                End date
+              </label>
+              <DatePickerComponent date={endDate} setDate={setEndDate} />
             </div>
           </div>
 

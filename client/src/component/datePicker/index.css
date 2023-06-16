@@ -1,0 +1,36 @@
+.datePicker {
+    /* background-color: red !important; */
+   
+}
+
+.react-datepicker__input-container {
+    display: block !important;
+
+    width: 150px !important;
+
+   
+   
+
+}
+.react-datepicker__input-container input {
+  
+    border-width: 1px !important;
+    border-color: #ced4da !important;
+    border-style: solid !important;
+    outline: none !important;
+    border-radius: 5px;
+    width: 100% !important;
+    height: 40px !important;
+    padding-left: 5px !important;
+    font-size: 12px !important;
+    color: rgb(17 24 39 ) !important;
+    font-family: 'Geologica', sans-serif;
+  
+}
+
+.react-datepicker-wrapper {
+
+    
+ 
+    
+}
