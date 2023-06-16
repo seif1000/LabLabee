@@ -3,6 +3,7 @@ import Header from "./component/Headre";
 import Home from "./pages/Home";
 import Lab from "./pages/Lab";
 import "./App.css";
+import CreateLab from "./pages/CreateLab";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
+          <Route path="/add-lab" element={<CreateLab />} />
           <Route path="/lab/:id" element={<Lab />} />
         </Route>
       </Routes>
