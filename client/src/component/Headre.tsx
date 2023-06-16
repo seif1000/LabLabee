@@ -1,5 +1,3 @@
-//#30b4a5
-
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { Link, Outlet } from "react-router-dom";
@@ -7,14 +5,14 @@ import logo from "../assets/images/lablabee.png";
 
 const navigation = [{ name: "Labs", href: "/", current: true }];
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Header = () => {
   return (
     <div>
-      <Disclosure as="nav" className=" bg-white">
+      <Disclosure as="nav" className="fixed top-0 w-full bg-white shadow">
         {({ open }) => (
           <>
             <div className=" border-b-[#30b4a5] px-2 sm:px-6 lg:px-8">
