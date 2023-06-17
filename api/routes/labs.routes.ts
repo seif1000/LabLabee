@@ -30,13 +30,13 @@ let checkSchemaLab = checkSchema({
     },
   },
   start_date: {
-    isDate: {
+    isISO8601: {
       errorMessage: "Lab start date should be a date",
     },
     custom: {
       options: (value, { req }) => {
         if (new Date(value) < new Date()) {
-          throw new Error("Lab start date should be a date in the past");
+          throw new Error("Lab start date should not be a date in the past");
         }
 
         if (new Date(value) > new Date(req.body.end_date)) {
@@ -48,13 +48,13 @@ let checkSchemaLab = checkSchema({
     },
   },
   end_date: {
-    isDate: {
+    isISO8601: {
       errorMessage: "Lab end date should be a date",
     },
     custom: {
       options: (value, { req }) => {
         if (new Date(value) < new Date()) {
-          throw new Error("Lab end date should be a date in the past");
+          throw new Error("Lab end date should not be a date in the past");
         }
 
         if (new Date(value) < new Date(req.body.end_date)) {

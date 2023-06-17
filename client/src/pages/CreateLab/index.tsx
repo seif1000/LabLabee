@@ -1,24 +1,20 @@
 import "react-datepicker/dist/react-datepicker.css";
 import DatePickerComponent from "../../component/datePicker";
-import { useState } from "react";
+
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { useParams } from "react-router-dom";
+import { useCreatePostMutation } from "../../redux/api";
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
-    .matches(
-      /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
-      "Lab name can only contain Latin letters."
-    )
-    .min(2, "Too Short!")
-    .max(15, "Too Long!")
+
+    .min(5, "Too Short!")
+    .max(50, "Too Long!")
     .required("Required"),
   technology: Yup.string()
-    .matches(
-      /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
-      "Lab technolgy can only contain Latin letters."
-    )
-    .min(2, "Too Short!")
-    .max(15, "Too Long!")
+
+    .min(5, "Too Short!")
+    .max(50, "Too Long!")
     .required("Required"),
 
   start_date: Yup.date()
@@ -27,8 +23,9 @@ const SignupSchema = Yup.object().shape({
   end_date: Yup.date().typeError("Please enter a valid end date").required(),
 });
 const CreateLab = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const params = useParams();
+
+  const [createPost, { isLoading, isError, error }] = useCreatePostMutation();
 
   return (
     <div>
@@ -42,13 +39,17 @@ const CreateLab = () => {
           initialValues={{
             name: "",
             technology: "",
-            start_date: startDate,
-            end_date: endDate,
+            start_date: new Date(),
+            end_date: new Date(),
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            console.log("====================================");
+          onSubmit={async (values, { setSubmitting }) => {
             console.log(values);
-            console.log("====================================");
+            createPost({
+              name: values.name,
+              technology: values.technology,
+              start_date: values.start_date,
+              end_date: values.end_date,
+            }).unwrap();
           }}
         >
           {({
@@ -59,6 +60,7 @@ const CreateLab = () => {
             handleBlur,
             handleSubmit,
             isSubmitting,
+            setFieldValue,
           }) => (
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
@@ -115,13 +117,22 @@ const CreateLab = () => {
                     Satrt date
                   </label>
                   <DatePickerComponent
-                    date={startDate}
-                    setDate={setStartDate}
+                    date={values.start_date}
+                    setDate={(val) => {
+                      setFieldValue("start_date", val);
+                    }}
                     name="start_date"
                   />
                   {errors.start_date && touched.start_date && (
                     <p className="text-xs text-red-300">{errors.start_date}</p>
                   )}
+                  {isError &&
+                    error?.status == 400 &&
+                    error?.data
+                      .filter((item) => item.path == "start_date")
+                      .map((item) => (
+                        <p className="text-xs text-red-300">{item.msg}</p>
+                      ))}
                 </div>
                 <div className=" flex-1">
                   <label
@@ -132,21 +143,42 @@ const CreateLab = () => {
                   </label>
                   <DatePickerComponent
                     name="end_date"
-                    date={endDate}
-                    setDate={setEndDate}
+                    date={values.end_date}
+                    setDate={(val) => {
+                      setFieldValue("end_date", val);
+                    }}
                   />
                   {errors.end_date && touched.end_date && (
                     <p className="text-xs text-red-300">{errors.end_date}</p>
                   )}
+                  {isError &&
+                    error?.status == 400 &&
+                    error?.data
+                      .filter((item) => item.path == "end_date")
+                      .map((item) => (
+                        <p className="text-xs text-red-300">{item.msg}</p>
+                      ))}
                 </div>
               </div>
 
               <button
                 type="submit"
+                disabled={isSubmitting || isLoading}
                 className="w-full rounded-lg bg-[#30b4a5] px-5 py-2.5 text-center text-sm font-medium text-white"
               >
-                {isSubmitting ? "Loading..." : "Create"}
+                {params.id
+                  ? isLoading
+                    ? "Updating..."
+                    : "Update"
+                  : isLoading
+                  ? "Creating..."
+                  : "Create"}
               </button>
+              {isError && error?.status == 500 && (
+                <p className="text-xs text-red-300">
+                  Somthing went wrong try later!
+                </p>
+              )}
             </form>
           )}
         </Formik>
