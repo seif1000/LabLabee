@@ -60,6 +60,20 @@ const CreateLab = () => {
             data-testid="loader"
           />
         </div>
+      ) : labDetailsQuery.isError ? (
+        <div className=" flex h-screen w-screen flex-col items-center justify-center">
+          <p className="text-md mb-5 text-red-500">
+            Somthing went wrong please reload the page
+          </p>
+          <button
+            onClick={() => {
+              labDetailsQuery.refetch();
+            }}
+            className="ml-2 rounded-md bg-[#30b4a5] px-6 py-4 text-white"
+          >
+            Reload
+          </button>
+        </div>
       ) : (
         <div className="mx-auto mt-32 max-w-lg px-6 py-6 lg:px-8">
           <h3 className="mb-4 text-xl font-medium text-gray-900 ">

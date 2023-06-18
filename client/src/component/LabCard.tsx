@@ -9,11 +9,14 @@ type Props = {
 };
 
 const LabCard = ({ lab }: Props) => {
-  const { name, technology, start_date, end_date } = lab;
+  const { name, technology, start_date, end_date, _id } = lab;
   const [deleteLab, deleteLabMutation] = useDeleteLabMutation();
 
   return (
-    <div className=" mt-2 rounded-md    pr-1 sm:w-full md:w-1/2  lg:w-1/4 ">
+    <Link
+      to={`lab-details/${_id}`}
+      className=" mt-2 rounded-md    pr-1 sm:w-full md:w-1/2  lg:w-1/4 "
+    >
       <div className="w-full border border-[#30b4a5] p-6">
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
@@ -44,7 +47,7 @@ const LabCard = ({ lab }: Props) => {
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
