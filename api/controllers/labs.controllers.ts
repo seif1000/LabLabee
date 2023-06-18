@@ -37,6 +37,7 @@ export const updateLab = async (
     if (!result.isEmpty()) {
       return res.status(400).send(result.array());
     }
+
     const lab = await Lab.findByIdAndUpdate<ILab>(req.params.lab_id, req.body, {
       new: true,
     });

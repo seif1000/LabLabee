@@ -1,3 +1,4 @@
+import { ListboxLabelProps } from "@headlessui/react";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const URL = "http://localhost:3000/api/v1/labs";
@@ -40,6 +41,14 @@ export const api = createApi({
         url: "/" + credentials._id,
 
         method: "PUT",
+        body: credentials,
+      }),
+      invalidatesTags: ["Labs"],
+    }),
+    deleteLab: builder.mutation<Lab, { _id: string }>({
+      query: (credentials) => ({
+        url: "/" + credentials._id,
+        method: "DELETE",
       }),
       invalidatesTags: ["Labs"],
     }),
@@ -51,4 +60,5 @@ export const {
   useCreatePostMutation,
   useUpdateLabMutation,
   useGetLabByIdQuery,
+  useDeleteLabMutation,
 } = api;
