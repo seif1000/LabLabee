@@ -23,6 +23,10 @@ export const api = createApi({
       query: () => ({ url: "/" }),
       providesTags: ["Labs"],
     }),
+    getLabById: builder.query<Lab, { _id: string }>({
+      query: (credentials) => ({ url: `/${credentials._id}` }),
+      providesTags: ["Labs"],
+    }),
     createPost: builder.mutation<Lab, Lab>({
       query: (credentials) => ({
         url: "/create",
@@ -31,7 +35,20 @@ export const api = createApi({
       }),
       invalidatesTags: ["Labs"],
     }),
+    updateLab: builder.mutation<Lab, Lab>({
+      query: (credentials) => ({
+        url: "/" + credentials._id,
+
+        method: "PUT",
+      }),
+      invalidatesTags: ["Labs"],
+    }),
   }),
 });
 
-export const { useGetAllLabsQuery, useCreatePostMutation } = api;
+export const {
+  useGetAllLabsQuery,
+  useCreatePostMutation,
+  useUpdateLabMutation,
+  useGetLabByIdQuery,
+} = api;

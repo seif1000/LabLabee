@@ -3,8 +3,8 @@ import DatePickerComponent from "../../component/datePicker";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useParams } from "react-router-dom";
-import { useCreatePostMutation } from "../../redux/api";
+import { useNavigate, useParams } from "react-router-dom";
+import { useCreatePostMutation, useGetLabByIdQuery } from "../../redux/api";
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
 
@@ -24,14 +24,21 @@ const SignupSchema = Yup.object().shape({
 });
 const CreateLab = () => {
   const params = useParams();
+  const navigate = useNavigate();
 
   const [createPost, { isLoading, isError, error }] = useCreatePostMutation();
+  const labDetailsQuery = useGetLabByIdQuery(
+    { _id: params.id },
+    {
+      skip: !params.id,
+    }
+  );
 
   return (
     <div>
       <div className="mx-auto mt-32 max-w-lg px-6 py-6 lg:px-8">
         <h3 className="mb-4 text-xl font-medium text-gray-900 ">
-          Create New Lab
+          {params.id ? "Update lab" : "Create New Lab"}
         </h3>
         <Formik
           // enableReinitialize={true}
@@ -42,7 +49,7 @@ const CreateLab = () => {
             start_date: new Date(),
             end_date: new Date(),
           }}
-          onSubmit={async (values, { setSubmitting }) => {
+          onSubmit={async (values) => {
             console.log(values);
             createPost({
               name: values.name,
@@ -50,6 +57,7 @@ const CreateLab = () => {
               start_date: values.start_date,
               end_date: values.end_date,
             }).unwrap();
+            navigate("/");
           }}
         >
           {({
