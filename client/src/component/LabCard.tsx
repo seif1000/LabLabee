@@ -3,6 +3,7 @@
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { Lab, useDeleteLabMutation } from "../redux/api";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 type Props = {
   lab: Lab;
@@ -26,6 +27,20 @@ const LabCard = ({ lab }: Props) => {
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {technology}
         </p>
+        <div className="mb-2 flex flex-row justify-between">
+          <div>
+            <p className="text-[#30b4a5]">Start date</p>
+            <p className="text-sm">
+              {moment(start_date).format("MMMM Do YYYY, h:mm a")}
+            </p>
+          </div>
+          <div>
+            <p className="text-[#30b4a5]">End date</p>
+            <p className="text-sm">
+              {moment(end_date).format("MMMM Do YYYY, h:mm a")}
+            </p>
+          </div>
+        </div>
         <div className="flex flex-row ">
           <Link
             to={`/add-lab/${lab._id}`}

@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDeleteLabMutation, useGetLabByIdQuery } from "../../redux/api";
 import { ClipLoader } from "react-spinners";
 import { CSSProperties } from "react";
+import moment from "moment";
 
 const override: CSSProperties = {
   display: "block",
@@ -55,6 +56,20 @@ const LabDetails = () => {
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
             {data?.technology}
           </p>
+          <div className=" mb-2 flex flex-col justify-between">
+            <div>
+              <p className="text-[#30b4a5]">Start date</p>
+              <p className="text-sm">
+                {moment(data.start_date).format("MMMM Do YYYY, h:mm a")}
+              </p>
+            </div>
+            <div>
+              <p className="text-[#30b4a5]">End date</p>
+              <p className="text-sm">
+                {moment(data.end_date).format("MMMM Do YYYY, h:mm a")}
+              </p>
+            </div>
+          </div>
           <div className="flex flex-row ">
             <Link
               to={`/add-lab/${params.id}`}
