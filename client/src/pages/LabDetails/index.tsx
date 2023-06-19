@@ -5,6 +5,7 @@ import { useDeleteLabMutation, useGetLabByIdQuery } from "../../redux/api";
 import { ClipLoader } from "react-spinners";
 import { CSSProperties } from "react";
 import moment from "moment";
+import { useAlert } from "react-alert";
 
 const override: CSSProperties = {
   display: "block",
@@ -14,7 +15,8 @@ const override: CSSProperties = {
 const LabDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const { data, isError, error, isLoading, refetch } = useGetLabByIdQuery({
+  const alert = useAlert();
+  const { data, isError, isLoading, refetch } = useGetLabByIdQuery({
     _id: params.id,
   });
 
@@ -82,7 +84,8 @@ const LabDetails = () => {
             <button
               onClick={async () => {
                 await deleteLab({ _id: params.id }).unwrap();
-                navigate("/labs");
+                alert.show("Lab was deleted succussfully");
+                navigate("/");
               }}
               type="button"
               className="mr-2 inline-flex items-center rounded-sm bg-[#30b4a5] px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"

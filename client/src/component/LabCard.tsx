@@ -2,8 +2,9 @@
 
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { Lab, useDeleteLabMutation } from "../redux/api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import moment from "moment";
+import { useAlert } from "react-alert";
 
 type Props = {
   lab: Lab;
@@ -11,13 +12,11 @@ type Props = {
 
 const LabCard = ({ lab }: Props) => {
   const { name, technology, start_date, end_date, _id } = lab;
-  const [deleteLab, deleteLabMutation] = useDeleteLabMutation();
+  const [deleteLab] = useDeleteLabMutation();
+  const alert = useAlert();
 
   return (
-    <Link
-      to={`lab-details/${_id}`}
-      className=" mt-2 rounded-md    pr-1 sm:w-full md:w-1/2  lg:w-1/4 "
-    >
+    <div className=" mt-2 rounded-md    pr-1 sm:w-full md:w-1/2  lg:w-1/4 ">
       <div className="w-full border border-[#30b4a5] p-6">
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
@@ -50,9 +49,12 @@ const LabCard = ({ lab }: Props) => {
             Edit
             <PencilIcon className="ml-1 h-4 w-4" aria-hidden="true" />
           </Link>
+
+          {/* `lab-details/${_id}` */}
           <button
             onClick={async () => {
               await deleteLab({ _id: lab._id }).unwrap();
+              alert.show("Lab was deleted succussfully");
             }}
             type="button"
             className="mr-2 inline-flex items-center rounded-sm bg-[#30b4a5] px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
@@ -60,9 +62,17 @@ const LabCard = ({ lab }: Props) => {
             Delete
             <TrashIcon className="ml-1 h-4 w-4" aria-hidden="true" />
           </button>
+          <Link
+            to={`lab-details/${_id}`}
+            type="button"
+            className="mr-2 inline-flex items-center rounded-sm bg-[#30b4a5] px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+          >
+            Details
+            <PencilIcon className="ml-1 h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

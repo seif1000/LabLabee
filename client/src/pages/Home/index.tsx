@@ -4,6 +4,7 @@ import { useGetAllLabsQuery } from "../../redux/api";
 
 import { CSSProperties } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useAlert } from "react-alert";
 const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
@@ -11,7 +12,7 @@ const override: CSSProperties = {
 };
 
 const Home = () => {
-  const { data, error, isLoading, isError, refetch } = useGetAllLabsQuery(null);
+  const { data, isLoading, isError, refetch } = useGetAllLabsQuery(null);
 
   return (
     <div className="mt-20 flex flex-row flex-wrap px-10 ">

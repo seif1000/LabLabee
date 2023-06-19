@@ -11,6 +11,7 @@ import {
 } from "../../redux/api";
 import { ClipLoader } from "react-spinners";
 import { CSSProperties } from "react";
+import { useAlert } from "react-alert";
 const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
@@ -37,6 +38,7 @@ const SignupSchema = Yup.object().shape({
 const CreateLab = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const alert = useAlert();
 
   const [createPost, { isLoading, isError, error }] = useCreatePostMutation();
   const [updateLab, updateLabMutation] = useUpdateLabMutation();
@@ -101,6 +103,7 @@ const CreateLab = () => {
                   end_date: values.end_date,
                   _id: params.id,
                 }).unwrap();
+                alert.show("Lab was updated succussfully");
                 navigate("/");
               } else {
                 await createPost({
@@ -109,6 +112,7 @@ const CreateLab = () => {
                   start_date: values.start_date,
                   end_date: values.end_date,
                 }).unwrap();
+                alert.show("Lab was created succussfully");
                 navigate("/");
               }
             }}
