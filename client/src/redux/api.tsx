@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const URL = "http://localhost:3000/api/v1/labs";
+export const URL = import.meta.env.DEV
+  ? "http://localhost:3000/api/v1/labs"
+  : "https://lablabee.onrender.com/api/v1/labs";
 
 export interface Lab {
   _id: string;
@@ -12,8 +14,8 @@ export interface Lab {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    // baseUrl: "https://lablabee.onrender.com/api/v1/labs",
     baseUrl: URL,
+    //  baseUrl: URL,
 
     ///  prepareHeaders: (headers, { getState }) => {},
   }),
