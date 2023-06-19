@@ -1,10 +1,9 @@
-import { ListboxLabelProps } from "@headlessui/react";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const URL = "http://localhost:3000/api/v1/labs";
 
 export interface Lab {
-  _id?: string;
+  _id: string;
   name: string;
   technology: string;
   start_date: Date;
