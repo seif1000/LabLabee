@@ -10,6 +10,8 @@ import {
 
 import { checkSchema } from "express-validator";
 
+// data  validation
+
 let checkSchemaLab = checkSchema({
   name: {
     isString: {

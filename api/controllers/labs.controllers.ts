@@ -11,11 +11,14 @@ export const getAllLabs = async (req: Request, res: Response) => {
   }
 };
 
+// create lab api
 export const createLab = async (req: Request<{}, {}, ILab>, res: Response) => {
   try {
+    // run the body validation
     const result = validationResult(req);
 
     if (!result.isEmpty()) {
+      // if there any error send  bad request error
       return res.status(400).send(result.array());
     }
     const user = new Lab<ILab>(req.body);
@@ -27,14 +30,18 @@ export const createLab = async (req: Request<{}, {}, ILab>, res: Response) => {
   }
 };
 
+// update lab api
+
 export const updateLab = async (
   req: Request<{ lab_id: string }, {}, {}>,
   res: Response
 ) => {
   try {
+    // run the body validation
     const result = validationResult(req);
 
     if (!result.isEmpty()) {
+      // if there any error send  bad request error
       return res.status(400).send(result.array());
     }
 
@@ -48,12 +55,15 @@ export const updateLab = async (
   }
 };
 
+// get lab by id
 export const getLabById = async (
   req: Request<{ lab_id: string }, {}, {}>,
   res: Response
 ) => {
   try {
     const lab = await Lab.findById(req.params.lab_id);
+
+    // if there any error send  not found request error
     if (!lab) return res.status(404).send("Lab not found");
     return res.status(200).send(lab);
   } catch (error: any) {
@@ -67,6 +77,7 @@ export const deleteLab = async (
 ) => {
   try {
     const lab = await Lab.findByIdAndDelete(req.params.lab_id);
+    // if there any error send  not found request error
     if (!lab) return res.status(404).send("Lab not found");
     return res.status(200).send(lab);
   } catch (error: any) {
