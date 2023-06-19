@@ -65,7 +65,7 @@ const CreateLab = () => {
       ) : labDetailsQuery.isError ? (
         <div className=" flex h-screen w-screen flex-col items-center justify-center">
           <p className="text-md mb-5 text-red-500">
-            Somthing went wrong please reload the page
+            {labDetailsQuery.error.data}
           </p>
           <button
             onClick={() => {

@@ -12,6 +12,7 @@ export interface Lab {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
+    // baseUrl: "https://lablabee.onrender.com/api/v1/labs",
     baseUrl: URL,
 
     ///  prepareHeaders: (headers, { getState }) => {},

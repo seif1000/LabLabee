@@ -28,18 +28,22 @@ const Header = () => {
                     )}
                   </Disclosure.Button>
                 </div>
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                  <div className="flex flex-shrink-0 items-center">
-                    <img
-                      className="block h-8 w-auto lg:hidden"
-                      src={logo}
-                      alt="Your Company"
-                    />
-                    <img
-                      className="hidden h-8 w-auto lg:block"
-                      src={logo}
-                      alt="Your Company"
-                    />
+                <div className="flex flex-1 items-center justify-center  sm:items-stretch sm:justify-start">
+                  <div className=" mr-8 flex flex-shrink-0 items-center">
+                    <Link to={"/"}>
+                      <img
+                        className="block h-5 w-auto  lg:hidden"
+                        src={logo}
+                        alt="Your Company"
+                      />
+                    </Link>
+                    <Link to={"/"}>
+                      <img
+                        className="hidden h-5 w-auto lg:block"
+                        src={logo}
+                        alt="Your Company"
+                      />
+                    </Link>
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="mt-1 flex space-x-4">

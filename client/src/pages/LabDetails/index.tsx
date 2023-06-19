@@ -16,7 +16,7 @@ const LabDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const alert = useAlert();
-  const { data, isError, isLoading, refetch } = useGetLabByIdQuery({
+  const { data, isError, isLoading, refetch, error } = useGetLabByIdQuery({
     _id: params.id,
   });
 
@@ -36,9 +36,7 @@ const LabDetails = () => {
         </div>
       ) : isError ? (
         <div className=" flex h-screen w-screen flex-col items-center justify-center">
-          <p className="text-md mb-5 text-red-500">
-            Somthing went wrong please reload the page
-          </p>
+          <p className="text-md mb-5 text-red-500">{error.data}</p>
           <button
             onClick={() => {
               refetch();
