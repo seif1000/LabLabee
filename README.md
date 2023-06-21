@@ -1,5 +1,19 @@
 # LabLabee
 
+## Tech used 
+### client 
+1.React/Vite
+2.Tailwindcss
+3.Redux Tool kit
+### server
+1. Nodejs/Express
+2. Mongodb
+3. Jest
+### hosting
+1.Firebase Hosting
+2.Render.com
+
+
 ## Index
 + [Demo](#demo)
 
