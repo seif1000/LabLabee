@@ -45,12 +45,19 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 	```
   	  npm run dev
         ```
-3.Set up jest
+
+### Testing 
+
+```
+  cd api 
+```
+
+2.Set up jest
        ```
 	$ npx ts-jest config:init
 	```
 	
-4.Start the  test
+3.Start the  test
 	```
 	$ npm test
 	```
