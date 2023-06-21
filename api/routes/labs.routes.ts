@@ -10,7 +10,7 @@ import {
 
 import { checkSchema } from "express-validator";
 
-// data  validation
+// data  validation for add lab
 
 let checkSchemaAddLab = checkSchema({
   name: {
@@ -68,6 +68,8 @@ let checkSchemaAddLab = checkSchema({
     },
   },
 });
+
+// data  validation for edit lab
 
 let checkSchemaEditLab = checkSchema({
   name: {
