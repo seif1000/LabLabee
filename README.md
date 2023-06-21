@@ -33,7 +33,7 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 1. Clone or Download the repository
 
 	```
-	$ git clone https://github.com/seif1000/Lablabee.git
+	$ git clone https://github.com/seif1000/LabLabee.git
 	
 	```
 
