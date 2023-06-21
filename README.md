@@ -31,19 +31,22 @@ Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.co
 
 2. Run React app
 	```
-  	  npm run dev
+ 	npm run dev
+ 
         ```
 
 ### API 
 
 1. Install Dependencies
 	```
-	  cd api && npm install 
+	  cd api && npm install
+ 
 	```
 
 2. Run the server app
 	```
   	  npm run dev
+ 
         ```
 
 ### Testing 
