@@ -11,7 +11,10 @@ type Props = {
 };
 
 const LabCard = ({ lab }: Props) => {
+  // lab props
   const { name, technology, start_date, end_date, _id } = lab;
+
+  // delete lab mutation
   const [deleteLab] = useDeleteLabMutation();
   const alert = useAlert();
 

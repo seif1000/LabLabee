@@ -12,6 +12,7 @@ const override: CSSProperties = {
 };
 
 const Home = () => {
+  // get all labs query
   const { data, isLoading, isError, refetch } = useGetAllLabsQuery(null);
 
   return (

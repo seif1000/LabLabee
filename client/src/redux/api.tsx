@@ -4,6 +4,7 @@ export const URL = import.meta.env.DEV
   ? "http://localhost:3000/api/v1/labs"
   : "https://lablabee.onrender.com/api/v1/labs";
 
+// Lab interface
 export interface Lab {
   _id: string;
   name: string;
@@ -56,6 +57,8 @@ export const api = createApi({
     }),
   }),
 });
+
+// export auto generated hooks
 
 export const {
   useGetAllLabsQuery,

@@ -12,11 +12,15 @@ import {
 import { ClipLoader } from "react-spinners";
 import { CSSProperties } from "react";
 import { useAlert } from "react-alert";
+
+/// override css for loader
 const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
   borderColor: "#30b4a5",
 };
+
+// data validation schema using  Yup
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -40,8 +44,14 @@ const CreateLab = () => {
   const navigate = useNavigate();
   const alert = useAlert();
 
+  // create post mutation
+
   const [createPost, { isLoading, isError, error }] = useCreatePostMutation();
+
+  // update post mutation
   const [updateLab, updateLabMutation] = useUpdateLabMutation();
+
+  // skip query if params.id is not present
   const labDetailsQuery = useGetLabByIdQuery(
     { _id: params.id },
     {

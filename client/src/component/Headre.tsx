@@ -5,6 +5,7 @@ import logo from "../assets/images/lablabee.png";
 
 const navigation = [{ name: "Labs", href: "/", current: true }];
 
+/// class name helper function
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }

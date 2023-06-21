@@ -6,6 +6,8 @@ type DatePickerProps = {
   setDate: Function;
   name: string;
 };
+
+// date picker component
 const DatePickerComponent = ({ setDate, date, name }: DatePickerProps) => {
   return (
     <DatePicker

@@ -16,10 +16,13 @@ const LabDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const alert = useAlert();
+
+  // get lab by id query
   const { data, isError, isLoading, refetch, error } = useGetLabByIdQuery({
     _id: params.id,
   });
 
+  // delete lab mutation
   const [deleteLab, deleteLabMutation] = useDeleteLabMutation();
   return (
     <>

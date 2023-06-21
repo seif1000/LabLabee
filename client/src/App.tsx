@@ -7,6 +7,8 @@ import CreateLab from "./pages/CreateLab";
 import LabDetails from "./pages/LabDetails";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+
+// alert options
 const options = {
   // you can also just use 'bottom center'
   position: positions.BOTTOM_CENTER,
@@ -19,6 +21,7 @@ const options = {
 
 function App() {
   return (
+    // warp the app with AlertProvider to use alert anywhere in the app
     <AlertProvider template={AlertTemplate} {...options}>
       <div>
         <Routes>
