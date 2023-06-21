@@ -15,38 +15,46 @@ Check [Demo](https://lablabee-de5bc.web.app/)
 ### Running Locally
 Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 
+ 
 1. Clone or Download the repository
 
 	```
 	$ git clone https://github.com/seif1000/Lablabee.git
 	
 	```
-2. Install Dependencies
 
+### client 
+1. Install Dependencies
 	```
-	$ npm install
+	  cd client && npm install 
 	```
 
-4. Start the application
+2. Run React app
+	```
+  	  npm run dev
+        ```
 
-	
+### API 
+
+1. Install Dependencies
 	```
-	$ npm run dev
+	  cd api && npm install 
 	```
-5. Build the app
-       
+
+2. Run the server app
 	```
-	$ npm run build
-	```
-	
-	
-6.Set up jest
+  	  npm run dev
+        ```
+3.Set up jest
        ```
 	$ npx ts-jest config:init
 	```
 	
-7.Start the  test
+4.Start the  test
 	```
 	$ npm test
 	```
-Your app should now be running on [localhost:3000](http://localhost:3000/).
+
+
+
+
