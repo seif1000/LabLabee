@@ -210,6 +210,13 @@ const CreateLab = () => {
                         .map((item) => (
                           <p className="text-xs text-red-300">{item.msg}</p>
                         ))}
+                    {updateLabMutation.isError &&
+                      updateLabMutation.error?.status == 400 &&
+                      updateLabMutation.error?.data
+                        .filter((item) => item.path == "start_date")
+                        .map((item) => (
+                          <p className="text-xs text-red-300">{item.msg}</p>
+                        ))}
                   </div>
                   <div className=" flex-1">
                     <label
@@ -231,6 +238,14 @@ const CreateLab = () => {
                     {isError &&
                       error?.status == 400 &&
                       error?.data
+                        .filter((item) => item.path == "end_date")
+                        .map((item) => (
+                          <p className="text-xs text-red-300">{item.msg}</p>
+                        ))}
+
+                    {updateLabMutation.isError &&
+                      updateLabMutation.error?.status == 400 &&
+                      updateLabMutation.error?.data
                         .filter((item) => item.path == "end_date")
                         .map((item) => (
                           <p className="text-xs text-red-300">{item.msg}</p>

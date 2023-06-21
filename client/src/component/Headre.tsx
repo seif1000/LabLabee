@@ -66,7 +66,7 @@ const Header = () => {
                   <Link
                     to="/add-lab"
                     type="button"
-                    className="flex flex-row rounded bg-[#30b4a5] p-3 text-white  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="flex flex-row rounded bg-[#30b4a5] p-2 text-white  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   >
                     <p>Add Lab</p>
                     <PlusIcon className="h-6 w-6" aria-hidden="true" />
